@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="HospitalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Departments">
+          <Key>
+            <PropertyRef Name="DepId" />
+          </Key>
+          <Property Name="DepId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Doctors">
+          <Key>
+            <PropertyRef Name="DocId" />
+          </Key>
+          <Property Name="DocId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="12" Nullable="false" />
+          <Property Name="SurName" Type="nchar" MaxLength="12" Nullable="false" />
+          <Property Name="Tckn" Type="nchar" MaxLength="12" Nullable="false" />
+          <Property Name="Gender" Type="nchar" MaxLength="12" Nullable="false" />
+          <Property Name="DayOfBirth" Type="nchar" MaxLength="12" Nullable="false" />
+          <Property Name="DepID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Patients">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="12" Nullable="false" />
+          <Property Name="SurName" Type="nchar" MaxLength="12" Nullable="false" />
+          <Property Name="Tckn" Type="nchar" MaxLength="12" Nullable="false" />
+          <Property Name="Gender" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="DayOfBirth" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="HospitalModelStoreContainer">
+          <EntitySet Name="Departments" EntityType="Self.Departments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Doctors" EntityType="Self.Doctors" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Patients" EntityType="Self.Patients" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HospitalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Departments">
+          <Key>
+            <PropertyRef Name="DepId" />
+          </Key>
+          <Property Name="DepId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="15" FixedLength="true" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Doctors">
+          <Key>
+            <PropertyRef Name="DocId" />
+          </Key>
+          <Property Name="DocId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="12" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="SurName" Type="String" MaxLength="12" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Tckn" Type="String" MaxLength="12" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Gender" Type="String" MaxLength="12" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="DayOfBirth" Type="String" MaxLength="12" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="DepID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Patients">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="12" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="SurName" Type="String" MaxLength="12" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Tckn" Type="String" MaxLength="12" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="DayOfBirth" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="HospitalEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Departments" EntityType="Self.Departments" />
+          <EntitySet Name="Doctors" EntityType="Self.Doctors" />
+          <EntitySet Name="Patients" EntityType="Self.Patients" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HospitalModelStoreContainer" CdmEntityContainer="HospitalEntities">
+          <EntitySetMapping Name="Departments">
+            <EntityTypeMapping TypeName="HospitalModel.Departments">
+              <MappingFragment StoreEntitySet="Departments">
+                <ScalarProperty Name="DepId" ColumnName="DepId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Doctors">
+            <EntityTypeMapping TypeName="HospitalModel.Doctors">
+              <MappingFragment StoreEntitySet="Doctors">
+                <ScalarProperty Name="DocId" ColumnName="DocId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SurName" ColumnName="SurName" />
+                <ScalarProperty Name="Tckn" ColumnName="Tckn" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="DayOfBirth" ColumnName="DayOfBirth" />
+                <ScalarProperty Name="DepID" ColumnName="DepID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Patients">
+            <EntityTypeMapping TypeName="HospitalModel.Patients">
+              <MappingFragment StoreEntitySet="Patients">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SurName" ColumnName="SurName" />
+                <ScalarProperty Name="Tckn" ColumnName="Tckn" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="DayOfBirth" ColumnName="DayOfBirth" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
